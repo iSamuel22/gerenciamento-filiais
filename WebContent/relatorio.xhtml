@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<style>
+* {
+	background-color: #eae3d0;
+	text-align: left;
+	font-family: monospace;
+	font-size: 20px;
+}
+</style>
+</h:head>
+<body>
+	<h:form>
+		<h:link value="Página inicial" outcome="index.xhtml" />
+		<br />
+		<br />
+		<h:panelGrid columns="1">
+			<h:outputLabel value="➤   Selecione uma Filial:" for="filial" />
+			<h:selectOneMenu value="#{funcionarioBean.idFilialSelecionada}"
+				id="filial">
+				<f:selectItem itemLabel="Todas" itemValue="-1" />
+				<f:selectItems value="#{funcionarioBean.filiais}" var="filialAtual"
+					itemLabel="#{filialAtual.nome}" itemValue="#{filialAtual.id}" />
+			</h:selectOneMenu>
+			<br />
+			<h:outputLabel value="➤   Insira a faixa salarial do funcionário: " />
+			<h:outputLabel value="Valor inicial" />
+			<h:inputText value="#{funcionarioBean.salarioInicial}"
+				requiredMessage="Informe o valor inicial" required="true" />
+			<h:outputLabel value="Valor final" />
+			<h:inputText value="#{funcionarioBean.salarioFinal}" required="true"
+				requiredMessage="Informe o valor final" />
+
+			<br />
+
+			<h:commandButton
+				action="#{funcionarioBean.filtrarFuncionariosFaixaSalarial(filial, funcionarioBean.salarioInicial, funcionarioBean.salarioFinal)}"
+				cellpadding="10" value="Buscar" />
+
+		</h:panelGrid>
+
+		<h:messages />
+
+	</h:form>
+
+	<br />
+
+	<h:form>
+		<h:panelGrid columns="2">
+			<h:dataTable
+				value="#{funcionarioBean.listaFuncionariosSalarioOrdenado}"
+				var="funcAtual" border="1">
+				<h:column>
+					<f:facet name="header">Nome</f:facet>
+					<h:outputText value="#{funcAtual.nome}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Idade</f:facet>
+					<h:outputText value="#{funcAtual.idade}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">CPF</f:facet>
+					<h:outputText value="#{funcAtual.cpf}">
+						<f:convertNumber pattern="#000.000.000-00" />
+					</h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Salário</f:facet>
+					<h:outputText value="#{funcAtual.salario}">
+						<f:convertNumber currencySymbol="R$" type="currency" />
+					</h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Endereço</f:facet>
+					<h:outputText value="#{funcAtual.endereco.enderecoResumido}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Filial</f:facet>
+					<h:outputText value="#{funcAtual.filial.nome}" />
+				</h:column>
+			</h:dataTable>
+
+		</h:panelGrid>
+	</h:form>
+</body>
+</html>

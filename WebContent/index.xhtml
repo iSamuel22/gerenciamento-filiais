@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<style>
+* {
+	background-color: #eae3d0;
+	text-align: left;
+	font-family: monospace;
+	font-size: 20px;
+}
+</style>
+</h:head>
+<body>
+	<h2>Projeto Empresa</h2>
+	<cite>Desenvolvido por Luan Borges, Lucas Ferreira e Samuel Pena</cite>
+	<br />
+	<br />
+	<h:form>
+		<h:panelGrid columns="1">
+			<h:commandLink action="filial?faces-redirect=true"
+				value="1. Gerenciar Filial" />
+			<h:commandLink action="funcionario?faces-redirect=true"
+				value="2. Gerenciar Funcionário" />
+			<h:commandLink action="relatorio?faces-redirect=true"
+				value="3. Relatórios de Funcionários" />
+		</h:panelGrid>
+	</h:form>
+</body>
+</html>
