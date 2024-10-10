@@ -1,4 +1,4 @@
-# Programacao-Orientada-A-Objetos
+# Programacao Orientada a Objetos
 Repositório conterá o projeto de Programação Orientada a Objetos. **Todos os dados são fictícios e tem a finalidade de testar os conhecimentos aprendidos em aula!**
 
 ## Configurações iniciais
